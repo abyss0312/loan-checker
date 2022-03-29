@@ -116,7 +116,7 @@ export class AuthService {
         console.log(this.config.get('SECRET_KEY'));
 
         return this.jwt.signAsync(payload, {
-            expiresIn: '15m',
+            expiresIn: '150m',
             secret: this.config.get('SECRET_KEY')
         })
     }

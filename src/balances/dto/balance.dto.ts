@@ -1,6 +1,7 @@
 import { AutoMap } from "@automapper/classes";
 import { IsBoolean, IsNumber, IsObject, IsString } from "class-validator";
 import { Category } from "src/category/entities/category.entity";
+import { CategoryBalanceDto } from "./Category.dto";
 
 export class BalanceDto {
 
@@ -9,6 +10,7 @@ export class BalanceDto {
     Amount: number;
 
     @IsObject()
+    @AutoMap()
     category: Category;
 
     @IsString()

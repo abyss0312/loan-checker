@@ -1,6 +1,7 @@
 import { AutoMap } from "@automapper/classes";
 import { Category } from "src/category/entities/category.entity";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { CategoryBalanceDto } from "../dto/Category.dto";
 
 
 @Entity()
@@ -13,6 +14,7 @@ export class Balance {
     @AutoMap()
     Amount: number;
 
+    @AutoMap({ typeFn: () => Category })
     @OneToOne(() => Category)
     @JoinColumn()
     category: Category;

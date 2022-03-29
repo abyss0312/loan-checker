@@ -8,8 +8,8 @@ export class Category {
     @AutoMap()
     Id: number;
 
-    @Column()
     @AutoMap()
+    @Column()
     Name: string;
 
 }

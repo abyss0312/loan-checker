@@ -51,18 +51,13 @@ export class BalancesService {
     async CreateBalance(balance: BalanceDto) : Promise<GenericResponse<string>>{
 
         const response = new GenericResponse<string>();
-        console.log(balance);
-        const category = new Category();
-        category.Id = balance.category.Id;
-        category.Name = balance.category.Name;
         
         try{
             const balanceMap = mapper.map(balance,Balance,BalanceDto);
             console.log(balanceMap);
             const balanceRes = this.balanceRepo.create(balanceMap);
-            balanceRes.category = category;
             console.log(balanceRes);
-            //await this.balanceRepo.save(balanceRes);
+            await this.balanceRepo.save(balanceRes);
 
             response.Code=201;
             response.Data='Creado correcto';
@@ -76,13 +71,10 @@ export class BalancesService {
             response.ValidateResult = false;
         }   
         
-        
-
-
-
-
         return response;
     }
+
+
 
  
 }

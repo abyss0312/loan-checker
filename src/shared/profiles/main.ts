@@ -1,4 +1,4 @@
-import { createMapper } from '@automapper/core';
+import { CamelCaseNamingConvention, createMapper } from '@automapper/core';
 import { classes } from '@automapper/classes';
 import { SignUpDto } from 'src/auth/dto/signup.dto';
 import { User } from 'src/user/entities/User.entity';
@@ -7,6 +7,7 @@ import { BalanceDto } from 'src/balances/dto/balance.dto';
 import { Balance } from 'src/balances/entity/balance.entity';
 import { CategoryDto } from 'src/category/dto/category.dto';
 import { Category } from 'src/category/entities/category.entity';
+import { CategoryBalanceDto } from 'src/balances/dto/Category.dto';
 
 
 export const mapper = createMapper({
@@ -16,5 +17,6 @@ export const mapper = createMapper({
 
   mapper.createMap(SignUpDto, User);
   mapper.createMap(SignUpDto,UserAuth);
-  mapper.createMap(BalanceDto,Balance);
   mapper.createMap(CategoryDto,Category);
+  mapper.createMap(BalanceDto,Balance);
+  mapper.createMap(Category,Category);

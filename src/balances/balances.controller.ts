@@ -13,7 +13,11 @@ export class BalancesController {
     @UseGuards(AuthGuard('jwt'))
     @Get(':id')
     ListByUser(@Param('id') id:number){
-        return this.balanceService.BalancesByUser(id);
+        console.log('ente');
+
+        return  this.balanceService.BalancesByUser(id);
+
+        
     }
 
     @UseGuards(AuthGuard('jwt'))

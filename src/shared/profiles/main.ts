@@ -7,7 +7,7 @@ import { BalanceDto } from 'src/balances/dto/balance.dto';
 import { Balance } from 'src/balances/entity/balance.entity';
 import { CategoryDto } from 'src/category/dto/category.dto';
 import { Category } from 'src/category/entities/category.entity';
-import { CategoryBalanceDto } from 'src/balances/dto/Category.dto';
+
 
 
 export const mapper = createMapper({
@@ -20,3 +20,4 @@ export const mapper = createMapper({
   mapper.createMap(CategoryDto,Category);
   mapper.createMap(BalanceDto,Balance);
   mapper.createMap(Category,Category);
+mapper.createMap(Balance,BalanceDto);

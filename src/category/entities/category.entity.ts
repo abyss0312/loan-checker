@@ -6,7 +6,7 @@ export class Category {
 
     @PrimaryGeneratedColumn()
     @AutoMap()
-    Id: number;
+    id: number;
 
     @AutoMap()
     @Column()

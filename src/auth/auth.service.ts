@@ -40,15 +40,29 @@ export class AuthService {
             });
             console.log(authRes);
 
-            if(!authRes) throw new UnauthorizedException('Credentials Incorrect');
+            if(!authRes) {
+                response.Code=404;
+                response.Data= '';
+                response.Message= 'Usuario No Existe';
+                response.ValidateResult = false;
+
+                return response;
+            };
 
             const pass = await argon.verify(authRes.Password,request.Password);
 
-            if(!pass) throw new UnauthorizedException('Credentials Incorrect');
+            if(!pass) {
+                response.Code=404;
+                response.Data= '';
+                response.Message= 'password  Incorrect';
+                response.ValidateResult = false;
+
+                return response;
+            };
 
             const token = 'bearer ' + await this.signToken(authRes.id,authRes.Username);
 
-            response.Code=201;
+            response.Code=200;
             response.Data=token;
             response.Message= 'Sign in';
             response.ValidateResult = true;
@@ -56,7 +70,7 @@ export class AuthService {
         }catch(ex){
             response.Code=500;
             response.Data=ex;
-            response.Message= 'Error Signing up';
+            response.Message= 'Error Loging up';
             response.ValidateResult = false;
         }  
 
@@ -116,7 +130,7 @@ export class AuthService {
         console.log(this.config.get('SECRET_KEY'));
 
         return this.jwt.signAsync(payload, {
-            expiresIn: '150m',
+            expiresIn: '110m',
             secret: this.config.get('SECRET_KEY')
         })
     }

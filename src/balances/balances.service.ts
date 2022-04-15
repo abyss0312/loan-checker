@@ -29,7 +29,10 @@ export class BalancesService {
                     UserId: userId
                 }
             });
-    
+
+            
+
+            console.log(listBalance);
             response.Code=200;
             response.Data=listBalance;
             response.Message= 'Correcto';
